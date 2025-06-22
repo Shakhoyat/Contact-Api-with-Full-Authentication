@@ -21,6 +21,10 @@ app.post("/api/user/register", async (req, res) => {
   if (!name || !email || !password) {
     return res.status(400).json({ error: "All fields are required" });
   }
+  let userExists = await User.findOne({ email });
+  if (userExists) {
+    return res.json({ message: "User already exists", success: false });
+  }
 
   let user = await User.create({
     name,
