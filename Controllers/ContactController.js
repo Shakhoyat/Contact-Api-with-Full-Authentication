@@ -7,7 +7,7 @@ export const createContact = async (req, res) => {
   const userId = req.user.id;
 
   if (!name || !email || !phone) {
-    return res.status(400).json({ error: "All fields are required" });
+    return res.json({ error: "All fields are required" });
   }
 
   try {
@@ -19,12 +19,12 @@ export const createContact = async (req, res) => {
       user: userId,
     });
 
-    res.status(201).json({
+    res.json({
       message: "Contact created successfully",
       success: true,
       contact,
     });
   } catch (error) {
-    res.status(500).json({ error: "Server error" });
+    res.json({ error: "Server error" });
   }
 };
