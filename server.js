@@ -12,9 +12,6 @@ app.get("/", (req, res) => {
 });
 
 //user routes
-//@api dscription:- user register
-//@api method:- POST
-// @api endpoint:- /api/user/register
 app.post("/api/user", userRouter);
 
 // Connect to MongoDB
