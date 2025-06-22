@@ -2,13 +2,17 @@ import express from "express";
 import mongoose from "mongoose";
 import bodyParser from "body-parser";
 import userRouter from "./Routes/UserRouter.js";
+import contactRouter from "./Routes/ContactRouter.js";
 
 const app = express();
+
+// Middleware to parse JSON bodies
 app.use(bodyParser.json());
 
-//user routes
+//user router
 app.use("/api/user", userRouter);
-
+//contact router
+app.use("/api/contact", contactRouter);
 //home route
 app.get("/", (req, res) => {
   res.send("Welcome to the Home Page Brooo!");
