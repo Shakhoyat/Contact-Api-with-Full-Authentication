@@ -1,4 +1,4 @@
-import { User } from "./Models/User.js";
+import { User } from "../Models/User.js";
 import bcrypt from "bcrypt";
 /**
  * @desc Register a new user
