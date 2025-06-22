@@ -6,13 +6,13 @@ import userRouter from "./Routes/UserRouter.js";
 const app = express();
 app.use(bodyParser.json());
 
+//user routes
+app.use("/api/user", userRouter);
+
 //home route
 app.get("/", (req, res) => {
   res.send("Welcome to the Home Page Brooo!");
 });
-
-//user routes
-app.post("/api/user", userRouter);
 
 // Connect to MongoDB
 mongoose
