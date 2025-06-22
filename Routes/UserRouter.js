@@ -3,15 +3,18 @@ import { registerUser, loginUser } from "../Controllers/UserController.js";
 
 const router = express.Router();
 
-//user routes
-//@api dscription:- user register
-//@api method:- POST
-// @api endpoint:- /api/user/register
+/**
+ * @route   POST /api/user/register
+ * @desc    Register a new user
+ * @access  Public
+ */
 router.post("/register", registerUser);
-//user routes
-//@api dscription:- user register
-//@api method:- POST
-// @api endpoint:- /api/user/login
+
+/**
+ * @route   POST /api/user/login
+ * @desc    Authenticate user and get token
+ * @access  Public
+ */
 router.post("/login", loginUser);
 
 export default router;
