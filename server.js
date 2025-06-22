@@ -3,6 +3,7 @@ import mongoose from "mongoose";
 import bodyParser from "body-parser";
 import userRouter from "./Routes/UserRouter.js";
 import contactRouter from "./Routes/ContactRouter.js";
+import dotenv from "dotenv";
 
 const app = express();
 
@@ -21,16 +22,15 @@ app.get("/", (req, res) => {
 });
 
 // Connect to MongoDB using Mongoose
+dotenv.config();
+
 mongoose
-  .connect(
-    "mongodb+srv://shakoyatsujon:3W8IdD5g6kON8AJW@cluster0.0p8evwy.mongodb.net/",
-    { dbName: "Nodejs101" }
-  )
+  .connect(process.env.MONGODB_URL, { dbName: process.env.DB_NAME })
   .then(() => console.log("MongoDB connection successful!"))
   .catch((err) => console.error("MongoDB connection error:", err));
 
 // Start the Express server
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
