@@ -6,7 +6,7 @@ import {
   getContactByUserId,
   newContact,
   updateContactById,
-} from "../Controllers/contact.js";
+} from "../Controllers/ContactController.js";
 import { isAthenticated } from "../Middlewares/Auth.js";
 
 const router = express.Router();
