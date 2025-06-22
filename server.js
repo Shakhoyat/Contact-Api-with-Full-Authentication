@@ -1,6 +1,7 @@
 import express from "express";
 import mongoose from "mongoose";
 import bodyParser from "body-parser";
+import { User } from "./Models/User.js";
 
 const app = express();
 app.use(bodyParser.json());
@@ -14,16 +15,21 @@ app.get("/", (req, res) => {
 //@api dscription:- user register
 //@api method:- POST
 // @api endpoint:- /api/user/register
-app.post("/api/user/register", (req, res) => {
+app.post("/api/user/register", async (req, res) => {
   const { name, email, password } = req.body;
-  console.log("printing user data:", req.body);
+  //   console.log("printing user data:", req.body);
+  if (!name || !email || !password) {
+    return res.status(400).json({ error: "All fields are required" });
+  }
+
+  let user = await User.create({
+    name,
+    email,
+    password, // In a real application, you should hash the password before saving it
+  });
   res.json({
-    message: "User registered successfully",
-    user: {
-      name,
-      email,
-      password, // In a real application, never send the password back in the response
-    },
+    message: "User created successfully",
+    success: true,
   });
 });
 
