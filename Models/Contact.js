@@ -6,11 +6,10 @@ const contactSchema = new mongoose.Schema({
   phone: { type: String, required: true },
   type: {
     type: String,
-    enum: ["personal", "professional"],
     default: "personal",
   },
   createdAt: { type: Date, default: Date.now },
-  user: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true },
+  user: { type: mongoose.Schema.Types.ObjectId, required: true },
 });
 
 export const Contact = mongoose.model("Contact", contactSchema);
