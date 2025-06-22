@@ -2,6 +2,7 @@ import express from "express";
 import mongoose from "mongoose";
 import bodyParser from "body-parser";
 import { User } from "./Models/User.js";
+import bcrypt from "bcrypt";
 
 const app = express();
 app.use(bodyParser.json());
@@ -21,16 +22,20 @@ app.post("/api/user/register", async (req, res) => {
   if (!name || !email || !password) {
     return res.status(400).json({ error: "All fields are required" });
   }
+
   let userExists = await User.findOne({ email });
   if (userExists) {
     return res.json({ message: "User already exists", success: false });
   }
+  // In a real application, you should hash the password before saving it
 
+  const hashedPassword = await bcrypt.hash(password, 10);
   let user = await User.create({
     name,
     email,
-    password, // In a real application, you should hash the password before saving it
+    password: hashedPassword, // In a real application, you should hash the password before saving it
   });
+
   res.json({
     message: "User created successfully",
     success: true,
