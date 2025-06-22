@@ -30,6 +30,7 @@ app.post("/api/user/register", async (req, res) => {
   res.json({
     message: "User created successfully",
     success: true,
+    user,
   });
 });
 
