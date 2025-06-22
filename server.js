@@ -1,6 +1,7 @@
 import express from "express";
 import mongoose from "mongoose";
 import bodyParser from "body-parser";
+import userRouter from "./Routes/user_router.js";
 
 const app = express();
 app.use(bodyParser.json());
@@ -14,7 +15,7 @@ app.get("/", (req, res) => {
 //@api dscription:- user register
 //@api method:- POST
 // @api endpoint:- /api/user/register
-app.post("/api/user/register");
+app.post("/api/user", userRouter);
 
 // Connect to MongoDB
 mongoose
