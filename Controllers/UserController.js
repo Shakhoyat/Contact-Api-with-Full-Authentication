@@ -38,15 +38,15 @@ export const loginUser = async (req, res) => {
     return res.status(400).json({ error: "All fields are required" });
   }
 
-  let user = await User.findOne({ email });
+  const user = await User.findOne({ email });
+
   if (!user) {
-    return res.status(404).json({ message: "User not found", success: false });
+    return res.json({ message: "User not found", success: false });
   }
   const isPasswordValid = await bcrypt.compare(password, user.password);
+
   if (!isPasswordValid) {
-    return res
-      .status(401)
-      .json({ message: "Invalid Password", success: false });
+    return res.json({ message: "Invalid Password", success: false });
   }
   res.json({
     message: "Login successful",
