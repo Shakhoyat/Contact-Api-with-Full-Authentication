@@ -13,7 +13,7 @@ export const isAthenticated = async (req, res, next) => {
 
   let user = await User.findById(id);
 
-  if (!user) return res.json({ message: "User not finde" });
+  if (!user) return res.json({ message: "User not found" });
 
   req.user = user;
 
