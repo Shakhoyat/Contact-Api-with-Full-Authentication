@@ -7,7 +7,7 @@ export const getAllContact = async (req, res) => {
   if (!userContact)
     return res.json({ message: "No Contact Exist", success: false });
 
-  res.json({ message: "All Contact Fatched", userContact });
+  res.json({ message: "All Contact Fetched", userContact });
 };
 
 // create new contact
