@@ -1,6 +1,14 @@
 import express from "express";
 import mongoose from "mongoose";
+import bodyParser from "body-parser";
+
 const app = express();
+app.use(bodyParser.json());
+
+//home route
+app.get("/", (req, res) => {
+  res.send("Welcome to the Home Page Brooo!");
+});
 
 //user routes
 //@api dscription:- user register
@@ -8,17 +16,15 @@ const app = express();
 // @api endpoint:- /api/user/register
 app.post("/api/user/register", (req, res) => {
   const { name, email, password } = req.body;
-
-  // Validate input
-  if (!name || !email || !password) {
-    return res.status(400).json({ message: "All fields are required" });
-  }
-
-  // Here you would typically save the user to the database
-  // For now, we'll just send a success response
-  res
-    .status(201)
-    .json({ message: "User registered successfully", user: { name, email } });
+  console.log("printing user data:", req.body);
+  res.json({
+    message: "User registered successfully",
+    user: {
+      name,
+      email,
+      password, // In a real application, never send the password back in the response
+    },
+  });
 });
 
 // Connect to MongoDB
@@ -33,7 +39,4 @@ mongoose
 const PORT = 3000;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
-});
-app.get("/", (req, res) => {
-  res.send("Hello, World!");
 });
