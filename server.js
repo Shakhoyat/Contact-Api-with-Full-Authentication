@@ -6,27 +6,30 @@ import contactRouter from "./Routes/ContactRouter.js";
 
 const app = express();
 
-// Middleware to parse JSON bodies
+// Middleware to parse JSON bodies from incoming requests
 app.use(bodyParser.json());
 
-//user router
+// User routes
 app.use("/api/user", userRouter);
-//contact router
+
+// Contact routes
 app.use("/api/contact", contactRouter);
-//home route
+
+// Home route
 app.get("/", (req, res) => {
-  res.send("Welcome to the Home Page Brooo!");
+  res.send("Welcome to the Home Page!");
 });
 
-// Connect to MongoDB
+// Connect to MongoDB using Mongoose
 mongoose
   .connect(
     "mongodb+srv://shakoyatsujon:3W8IdD5g6kON8AJW@cluster0.0p8evwy.mongodb.net/",
     { dbName: "Nodejs101" }
   )
-  .then(() => console.log("MongoDB connection successful!!!"))
+  .then(() => console.log("MongoDB connection successful!"))
   .catch((err) => console.error("MongoDB connection error:", err));
 
+// Start the Express server
 const PORT = 3000;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
