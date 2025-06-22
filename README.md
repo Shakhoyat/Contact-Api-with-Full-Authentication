@@ -2,7 +2,7 @@
 
 <div align="center">
 
-![Tech Stack](https://skillicons.dev/icons?i=nodejs,express,mongodb,jwt,postman,github,render)
+![Tech Stack](https://skillicons.dev/icons?i=nodejs,express,mongodb,postman,github,render)
 
 [![Live Demo](https://img.shields.io/badge/Live%20Demo-Render-46E3B7?style=for-the-badge&logo=render&logoColor=white)](https://contact-api-with-full-authentication-wtw1.onrender.com/)
 [![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=node.js&logoColor=white)](https://nodejs.org/)
